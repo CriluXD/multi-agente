@@ -10,4 +10,5 @@ SYSTEM = (
 
 
 def resumir(tema: str, pesquisas: list[str]) -> str:
-    return rodar_agente(SYSTEM, f"Tema: {tema}\n\n" + "\n\n".join(pesquisas))
+    return rodar_agente(SYSTEM, f"Tema: {tema}\n\n" + "\n\n".join(pesquisas),
+                        nome="resumidor", max_tokens=6000)

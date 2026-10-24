@@ -14,9 +14,20 @@ def _slug(texto: str, limite: int = 50) -> str:
     return texto[:limite] or "relatorio"
 
 
-def salvar_relatorio(tema: str, conteudo: str) -> Path:
+def _salvar(tema: str, conteudo: str, prefixo: str, carimbo: str) -> Path:
     config.OUTPUT_DIR.mkdir(exist_ok=True)
-    nome = f"{datetime.now():%Y%m%d_%H%M%S}_{_slug(tema)}.md"
-    caminho = config.OUTPUT_DIR / nome
+    caminho = config.OUTPUT_DIR / f"{carimbo}_{prefixo}_{_slug(tema)}.md"
     caminho.write_text(conteudo, encoding="utf-8")
     return caminho
+
+
+def novo_carimbo() -> str:
+    return f"{datetime.now():%Y%m%d_%H%M%S}"
+
+
+def salvar_relatorio(tema: str, conteudo: str, carimbo: str | None = None) -> Path:
+    return _salvar(tema, conteudo, "relatorio", carimbo or novo_carimbo())
+
+
+def salvar_revisao(tema: str, conteudo: str, carimbo: str | None = None) -> Path:
+    return _salvar(tema, conteudo, "revisao", carimbo or novo_carimbo())

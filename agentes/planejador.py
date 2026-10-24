@@ -13,7 +13,7 @@ SYSTEM = (
 
 
 def planejar(tema: str) -> list[str]:
-    saida = rodar_agente(SYSTEM, f"Tema: {tema}\nGere {config.N_SUBTOPICOS} subtópicos.")
+    saida = rodar_agente(SYSTEM, f"Tema: {tema}\nGere {config.N_SUBTOPICOS} subtópicos.", nome="planejador")
     saida = saida.replace("```json", "").replace("```", "").strip()
     try:
         return json.loads(saida)[: config.N_SUBTOPICOS]

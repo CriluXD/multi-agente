@@ -11,4 +11,5 @@ SYSTEM = (
 
 
 def redigir(tema: str, resumo: str) -> str:
-    return rodar_agente(SYSTEM, f"Tema: {tema}\n\nResumo:\n{resumo}", max_tokens=6000)
+    return rodar_agente(SYSTEM, f"Tema: {tema}\n\nResumo:\n{resumo}",
+                         max_tokens=6000, nome="redator")

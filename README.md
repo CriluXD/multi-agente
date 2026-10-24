@@ -1,6 +1,9 @@
 # Multi-agente de pesquisa
 
-Pipeline: **Planejador → Pesquisadores (paralelo) → Resumidor → Redator**.
+Pipeline: **Planejador → Pesquisadores (paralelo) → Resumidor → Revisor → Redator**.
+
+O **Revisor** compara o resumo com a pesquisa bruta, corrige o resumo, imprime no
+terminal o que estava errado (no resumo e na pesquisa) e salva o registro em `outputs/`.
 
 ## Estrutura
 ```
@@ -15,9 +18,10 @@ multi_agente/
 │   ├── planejador.py
 │   ├── pesquisador.py
 │   ├── resumidor.py
+│   ├── revisor.py
 │   └── redator.py
 ├── ferramentas/         # busca web e salvamento de arquivos
-└── outputs/             # relatórios gerados (.md)
+└── outputs/             # relatórios e revisões gerados (.md)
 ```
 
 ## Como usar

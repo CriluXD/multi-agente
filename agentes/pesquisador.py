@@ -12,4 +12,5 @@ SYSTEM = (
 
 def pesquisar(tema: str, subtopico: str) -> str:
     entrada = f"Tema geral: {tema}\nSubtópico a pesquisar: {subtopico}"
-    return f"### {subtopico}\n" + rodar_agente(SYSTEM, entrada, usar_busca=True)
+    return f"### {subtopico}\n" + rodar_agente(SYSTEM, entrada, usar_busca=True,
+                                      max_tokens=6000, nome=f"pesquisador[{subtopico[:30]}]")
